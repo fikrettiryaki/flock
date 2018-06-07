@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="db/changelog/changelog-master.xml"
+                   objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <include file="01-envers.xml" relativeToChangelogFile="true"/>
+    <include file="02-customerorder.xml" relativeToChangelogFile="true"/>
+    <include file="03-animal.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

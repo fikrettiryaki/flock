@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE'
+        classpath 'org.liquibase:liquibase-gradle-plugin:1.2.4'
+        classpath 'org.yaml:snakeyaml:1.12'
+    }
+}
+
+plugins {
+    id 'nebula.facet' version '3.4.0'
+    id 'nebula.lint' version '7.9.5'
+    id 'org.liquibase.gradle' version '1.2.4'
+    id 'org.springframework.boot' version '1.5.2.RELEASE'
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'project-report'
+apply plugin: "application"
+apply plugin: "org.springframework.boot"
+
+version '0.1.0'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    mainClassName = "com.ing.FarmshopApp"
+}
+
+jar {
+    baseName = "farmshop"
+    group = "com.ing"
+    version = '0.1.0'
+    manifest { attributes "Main-Class": "com.ing.FarmshopApp" }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'io.swagger:swagger-annotations:1.5.8'
+    compile 'io.springfox:springfox-swagger-ui:2.6.1'
+    compile 'io.springfox:springfox-swagger2:2.6.1'
+    compile 'org.hibernate:hibernate-java8:5.1.0.Final'
+    compile 'org.hibernate:hibernate-envers'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.projectlombok:lombok:1.16.18'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9'
+
+
+    runtime 'org.liquibase:liquibase-core:3.5.3'
+    runtime 'org.liquibase.ext:liquibase-hibernate5:3.6'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core'
+    testCompile 'org.springframework:spring-test:4.3.5.RELEASE'
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+
+}
+

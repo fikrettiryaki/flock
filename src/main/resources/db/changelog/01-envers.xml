@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="db/changelog/changelogs/001-DDL-ENVERS.xml"
+                   objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+
+    <changeSet id="1" author="fikret.tiryaki">
+        <comment>Create Hibernate Envers table which will contain revision information</comment>
+
+        <createTable tableName="REVINFO">
+            <column name="REV" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REVTSTMP" type="bigint" defaultValue="null"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="fikret.tiryaki">
+        <comment>Create Hibernate Envers table which will contain revision changes</comment>
+
+        <createTable tableName="REVCHANGES">
+            <column name="REV" type="int">
+                <constraints nullable="false" foreignKeyName="REVCHANGES_REVINFO_FK"
+                             referencedTableName="REVINFO" referencedColumnNames="REV"/>
+            </column>
+            <column name="ENTITYNAME" type="varchar(255)" defaultValue="null"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

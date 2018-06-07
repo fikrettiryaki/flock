@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet id="1" author="fikret.tiryaki">
+        <comment>Animal table initialization</comment>
+
+        <createTable tableName="ANIMAL">
+            <column name="ID" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ANIMAL_TYPE" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SEX" type="varchar(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WOOL" type="Integer">
+            </column>
+            <column name="MILK" type="Integer">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

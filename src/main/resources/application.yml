@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:8080}
+
+swagger:
+  title: Farmshop Application
+  description: Farmshop application - ing
+
+spring:
+  application:
+    name: farmshop
+  jpa:
+     generate-ddl: true
+     hibernate:
+       ddl-auto: validate
+  datasource:
+    url: jdbc:h2:mem:farmshop_db;
+    username: sa
+    password: ""
+    hikari:
+      driverClassName: org.h2.Driver
+
+  h2.console.enabled: true
+  h2.console.path: /h2
+
+
+xml:
+  path: src/main/resources/xmls/flock.xml
+
+liquibase:
+  enabled: true
+  change-log: classpath:db/changelog/changelog-master.xml
+  contexts: default
+  user: ${spring.datasource.username}
+  password: ${spring.datasource.password}
+  url: ${spring.datasource.url}
+
