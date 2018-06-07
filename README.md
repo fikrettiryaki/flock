@@ -25,5 +25,7 @@ Application can be tested via postman or any other tool that can be used to cons
 Validations can be richer
 Stock information could have a date component where orders and stocks are matched in a daily manner
 integration tests can be added
+Logging tool could be added
+Flock and Order domains could be seperated into different microservices to demonstrate microservice architechtire and scalability of project
 
 
