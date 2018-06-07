@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("farmshop")
 @AllArgsConstructor
@@ -43,6 +45,8 @@ public class FarmshopRestController {
 	@GetMapping("flock")
 	@ApiOperation("Get flock information")
 	public ResponseEntity<FlockDto> findAll() {
+
+		log.info("Flock request has arrived");
 		return ResponseEntity.ok(flockService.findAllAnimals());
 	}
 
@@ -54,6 +58,7 @@ public class FarmshopRestController {
 	@GetMapping("stock")
 	@ApiOperation("Get current available stock")
 	public ResponseEntity<StockDto> findStock() {
+		log.info("Stock request has arrived");
 		return ResponseEntity.ok(flockService.getAvailableStock());
 	}
 
@@ -65,6 +70,9 @@ public class FarmshopRestController {
 	@GetMapping("orders")
 	@ApiOperation("Get all orders")
 	public ResponseEntity<List<OrderDto>> findOrders() {
+
+		log.info("Find orders history request has arrived");
+
 		return ResponseEntity.ok(orderService.findAllOrders());
 	}
 
@@ -79,6 +87,8 @@ public class FarmshopRestController {
 	@ApiOperation("Create an order ")
 	@Transactional
 	public ResponseEntity<OrderConfirmDto> createOrder(@RequestBody @Valid final OrderDto order, final HttpServletRequest request) {
+
+		log.info("Create order request has arrived with parameter {}", order);
 		orderValidateService.validateOrder(order);
 		return ResponseEntity.ok(orderService.createOrder(order));
 	}
